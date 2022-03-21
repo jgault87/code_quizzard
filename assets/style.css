@@ -48,8 +48,9 @@ header {
 
 
 .questionstext {
-  min-height: 50vh;
- text-align: center;
+  min-height: 40vh;
+  text-align: center;
+  font-size: larger;
  
 }
 
@@ -102,7 +103,22 @@ ul li {
   cursor: pointer;
 }
 
+.incorrect, .correct {
+  border: none;
+  background-color: rgb(25, 8, 175);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+    0px;
+  color: hsl(0, 0%, 100%);
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 16px 16px 16px 20px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
 
+  
+}
 
 .float-right {
   float: right;
@@ -113,7 +129,10 @@ ul li {
 
 img {height: 75px;}
 
-.question1, .question2, .question3, .question4, .question5 {
+/* .question1, .question2, .question3, .question4, .question5 {
+  display: none;
+} */
+.hidden {
   display: none;
 }
 
@@ -127,6 +146,35 @@ img {height: 75px;}
 
 }
 
+.positionup { 
+  position: relative;
+  bottom: 15vh; 
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5vh;
+  font-weight: bolder;
+
+}
+
+#feedback {
+  position: relative;
+  bottom: 15vh; 
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5vh;
+  font-weight: bolder;
+  color: red !important;
+
+}
+
+#feedfront {
+  position: relative;
+  bottom: 15vh; 
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5vh;
+  font-weight: bolder;
+  color: green !important;
+
+}
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
@@ -134,9 +182,7 @@ img {height: 75px;}
     padding: 10px 15px;
   }
 
-  #password {
-    font-size: 1rem;
-  }
+  
 }
 
 @media (max-width: 500px) {

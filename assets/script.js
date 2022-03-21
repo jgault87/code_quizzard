@@ -1,116 +1,136 @@
 var startButton = document.querySelector(".btn");
-var questionText = document.querySelector(".questionstext")
+var questionText = document.querySelector(".questionstext");
+var timerElement = document.getElementById("timer");
+var question1 = document.querySelector(".question1");
+var timershow = document.querySelector(".positionup");
+var hideWelcome = document.querySelector(".questionhead");
 
-// var question1 = document.querySelector('#question1')
-// var question2 = document.querySelector('#question2')
-// var question3 = document.querySelector('#question3')
-// var question4 = document.querySelector('#question4')
-// var question5 = document.querySelector('#question5')
+var feedbackEl = document.getElementById("feedback");
+var feedfrontEl = document.getElementById("feedfront");
 
-
-var currentQuestion = 0;
-var score = 0;
-
-
-//questions array
-
-var questions = [
-  {
-    question: "Common data types do not include:",
-
-    answers: [
-      { option: "Strings", answer: false },
-      { option: "Booleans", answer: false },
-      { option: "Alerts", answer: true },
-      { option: "Numbers", answer: false },
-    ],
-  },
-
-  {
-    question:
-      "The Condition in an if / else statement is enclosed within ____.",
-
-    answers: [
-      { option: "quotes", answer: false },
-      { option: "curly brackets", answer: false },
-      { option: "parentheses", answer: true },
-      { option: "square brackets", answer: false },
-    ],
-  },
-
-  {
-    question: "Arrays in JavaScript can be used to store _____.",
-
-    answers: [
-      { option: "numbers and strings", answer: false },
-      { option: "other arrays", answer: false },
-      { option: "Booleans", answer: false },
-      { option: "all of the above", answer: true },
-    ],
-  },
-
-  {
-    question:
-      "String values must be enclosed within ____ when being assigned to variables.",
-
-    answers: [
-      { option: "commas", answer: false },
-      { option: "curly brackets", answer: false },
-      { option: "quotes", answer: true },
-      { option: "parenthesis", answer: false },
-    ],
-  },
-  {
-    question:
-      "A very useful tool used during development and debugging for printing content to the debugger is:",
-
-    answers: [
-      { option: "JavaScript", answer: false },
-      { option: "Terminal/Bash", answer: false },
-      { option: "For Loops", answer: false },
-      { option: "Console Log", answer: true },
-    ],
-  },
-];
+//correct/incorrect buttons
+var submitYes = document.getElementsByClassName("correct");
+var submitNo = document.getElementsByClassName("incorrect");
 
 
 
+var answeredCorrect = submitYes.onclick;
+
+// arrays to loop through all correct/incorrect buttons
+
+for (var i = 0; i < submitYes.length; i++) {
+  submitYes[i].addEventListener("click", function () {
+    console.log("Correct")
+    Question1.classList.add("hidden") 
+    question2.removeAttribute("class", "hidden")
+
+    feedfrontEl.removeAttribute("class", "hidden");
+    setTimeout(function () {
+      feedfrontEl.setAttribute("class", "hidden")
+    },1000);
+    
 
 
+
+    // for (var i = 0; i < submitYes.length; i++) {
+    //   submitYes[i].addEventListener("click", function () {
+    //     console.log("Correct")
+    
+    //     question2.classList.add("hidden") 
+    //     question3.removeAttribute("class", "hidden")
+    
+      
+
+});}
+
+
+for (var i = 0; i < submitNo.length; i++) {
+  submitNo[i].addEventListener("click", function () {
+    console.log("Incorrect")
+    updateCountDown();
+
+
+    feedbackEl.removeAttribute("class", "hidden");
+    setTimeout(function () {
+      feedbackEl.setAttribute("class", "hidden")
+    },1000);
+    
+
+
+
+  })};
+
+
+
+//question elements
+var Question1 = document.getElementById("question1");
+var question2 = document.getElementById("question2");
+var question3 = document.getElementById("question3");
+var question4 = document.getElementById("question4");
+var question5 = document.getElementById("question5");
 
 var timer;
 var timerCount;
+var currentQuestion = 0;
+var score = 0;
 
+//function to decrement time on wrong answer
 
-
-function startQuiz() {
+function updateCountDown() {
+  timerCount = timerCount - 10;
   
-  //display question 1 and answers 
-  // questionText.innerHTML = questions[0].question + "<br> </br> " + questions[0].answers[0].option + "<br> </br> " + questions[0].answers[1].option + "<br> </br> " + questions[0].answers[2].option + "<br> </br> " + questions[0].answers[3].option;
- 
-  //display question 2 and answers
-  // questionText.innerHTML = questions[1].question + "<br> </br> " + questions[1].answers[0].option + "<br> </br> " + questions[1].answers[1].option + "<br> </br> " + questions[1].answers[2].option + "<br> </br> " + questions[1].answers[3].option;
- 
-  // //display question 3 and answers
-  //  questionText.innerHTML = questions[2].question + "<br> </br> " + questions[2].answers[0].option + "<br> </br> " + questions[2].answers[1].option + "<br> </br> " + questions[2].answers[2].option + "<br> </br> " + questions[2].answers[3].option;
- 
-  // display question 4 and answers
-  // questionText.innerHTML = questions[3].question + "<br> </br> " + questions[3].answers[0].option + "<br> </br> " + questions[3].answers[1].option + "<br> </br> " + questions[3].answers[2].option + "<br> </br> " + questions[3].answers[3].option;
-   
-   //display question 5 and answers
-   questionText.innerHTML = questions[4].question + "<br> </br> " + questions[4].answers[0].option + "<br> </br> " + questions[4].answers[1].option + "<br> </br> " + questions[4].answers[2].option + "<br> </br> " + questions[4].answers[3].option;
-
-
+  if (timerCount < 0 ) {
+    timerCount = 0;
   }
 
+}
 
 
 
-//event listener to start quiz func
+function reload() {
+  reload = location.reload();
+}
+
+
+
+function startTimer() {
+  timer = setInterval(function () {
+    timerCount--;
+    timerElement.textContent = timerCount;
+    if (timerCount >= 0) {
+    }
+    // Tests if time has run out
+    if (timerCount <= 0) {
+      // Clears interval
+      clearInterval(timer);
+      questionText.textContent = "🧙STUPEFY🧙";
+      timershow.textContent = "You ran out of time";
+      startButton.innerHTML = "Retry?";
+      startButton.addEventListener("click", reload, false);
+    }
+  }, 1000);
+}
+
+
+// startgame function fires on click event
+
+function startQuiz() {
+  hideWelcome.classList.add("hidden");
+  timershow.style.visibility = "visible";
+  timerCount = 50;
+  startButton.disabled = true;
+  startTimer();
+  Question1.removeAttribute("class", "hidden");
+
+  
+
+
+}
+
+
 
 startButton.addEventListener("click", startQuiz);
 
-
-
-// targeted dom to decorate dom
-questionText.classList.add("myStyle"); 
+// targeted dom to decorate text due to lazy
+questionText.classList.add("myStyle");
+timershow.style.visibility = "hidden";

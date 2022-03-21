@@ -13,42 +13,48 @@
         <h1>Code Quizzard <img src="assets/wizard.png"></h1>
       </header>
       <div class="quizbody">
-        <h2 id="questionhead"></h2>
-        <ul class ="questionstext">  Welcome to the wizard coding quiz. You will lose time for each wrong answer you select. Finish before the timer runs out and you win! <br> <br> <br> <br> Prepare to be quizzard blasted!
+        <h2 class="questionhead">Welcome to the wizard coding quiz. You will lose time for each wrong answer you select. Finish before the timer runs out and you win! <br> <br> <br> <br> Prepare to be quizzard blasted!</h2>
 
+        <ul class ="questionstext">   
+          <span class="hidden" id="question1">
           <li class="question1">Common data types do not include:</li>
-          <li class="question1">Strings</li>
-          <li class="question1">Booleans</li>
-          <li class="question1">alerts</li>
-          <li class="question1">numbers</li>
-        
+          <li class="question1"><button class="incorrect">Strings</button></li>
+          <li class="question1"><button class="incorrect">Booleans</button></li>
+          <li class="question1"><button class="correct">alerts</button></li>
+          <li class="question1"><button class="incorrect">numbers</button></li>
+        </span>
 
+        <span class="hidden" id="question2">
+          <ul>The Condition in an if / else statement is enclosed within ____.</ul>
+          <li><button class="incorrect">Quotes</button></li>
+          <li><button class="correct">Curly Brackets</button></li>
+          <li><button class="incorrect">Alerts</button></li>
+          <li><button class="incorrect">Numbers</button></li>
+        </span>
 
-          <li class="question2">1Common data types do not include:
-          <li class="question2">Strings</li>
-          <li class="question2">Booleans</li>
-          <li class="question2">alerts</li>
-          <li class="question2">numbers</li></li>
+        <span class="hidden" id="question3">
+          <ul>Arrays in JavaScript can be used to store _____.</ul>
+          <li><button class="incorrect">numbers and strings</button></li>
+          <li><button class="incorrect">other arrays</button></li>
+          <li><button class="incorrect">Booleans</button></li>
+          <li><button class="correct">All of the above</button></li>
+        </span>
 
+        <span class="hidden" id="question4">
+          <ul>String values must be enclosed within ____ when being assigned to variables.</ul>
+          <li><button class="incorrect">commas</button></li>
+          <li><button class="correct">quotes</button></li>
+          <li><button class="incorrect">curly brackets</button></li>
+          <li><button class="incorrect">parenthesis</button></li>
+        </span>
 
-          <li class="question3">1Common data types do not include:
-          <li class="question3">Strings</li>
-          <li class="question3">Booleans</li>
-          <li class="question3">alerts</li>
-          <li class="question3">numbers</li></li>
-
-
-          <li class="question4">1Common data types do not include:
-          <li class="question4">Strings</li>
-          <li class="question4">Booleans</li>
-          <li class="question4">alerts</li>
-          <li class="question4">numbers</li></li>
-
-          <li class="question5">1Common data types do not include:
-          <li class="question5">Strings</li>
-          <li class="question5">Booleans</li>
-          <li class="question5">alerts</li>
-          <li class="question5">numbers</li></li>
+        <span class="hidden" id="question5">
+          <ul>A very useful tool used during development and debugging for printing content to the debugger is:</ul>
+          <li><button class="incorrect">JavaScript</button></li>
+          <li><button class="incorrect">Terminal/Bash</button></li>
+          <li><button class="incorrect">For Loops</button></li>
+          <li><button class="correct">Console Log</button></li>
+        </span>
 
         </ul>
 
@@ -62,8 +68,8 @@
         </div>
        
         <div class="card-footer">
-          <button id="startbutton" class="btn">Start Quiz</button> <div class="timer-count">45</div><p>seconds remaining</p>
-        </div>
+          <button id="startbutton" class="btn">Start Quiz</button> <p class="positionup">You have: <span id="timer"> </span> seconds remaining!</p>
+          <h2 class="hidden" id="feedback">WRONG!</h2> <h2 class="hidden" id="feedfront">Correct</h2>
         </div>
       </div>
     </div>
